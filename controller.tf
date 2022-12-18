@@ -5,8 +5,7 @@ resource "aws_instance" "cluster-controller" {
 
   tags = tomap({
     "Name" = "${var.cluster_name}-master-${count.index + 1}",
-    "Role" = "master",
-    "${var.kube_cluster_tag}" = "shared"
+    "Role" = "master"
   }
   )
 

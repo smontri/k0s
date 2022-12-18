@@ -3,9 +3,12 @@ resource "aws_instance" "cluster-controller" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.cluster_flavor
 
-  tags = {
-    Name = "controller"
+  tags = tomap{{
+    "Name" = "${var.cluster_name}-master-${count.index + 1}",
+    "Role" = "controller"
   }
+  }
+
   key_name                    = aws_key_pair.cluster-key.key_name
   vpc_security_group_ids      = [aws_security_group.cluster_allow_ssh.id]
   associate_public_ip_address = true

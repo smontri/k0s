@@ -73,7 +73,7 @@ locals {
     kind       = "cluster"
     spec = {
       hosts = [
-        for host in concat(aws_instance.cluster-controller, aws_instance.cluster-workers) : {
+        for host in concat(aws_instance.master, aws_instance.worker) : {
           ssh = {
             address = host.public_ip
             user    = "ubuntu"

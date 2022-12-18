@@ -1,4 +1,4 @@
-terraform.tfvars
+#terraform.tfvars
 .terraform
 terraform.tfstate*
 aws_private.pem
